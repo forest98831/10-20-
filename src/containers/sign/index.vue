@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <div :style="bgImg">
+    
     <div id="div_whole">
       <div id="div_left">
         <p>新用户注册</p>
@@ -37,18 +38,35 @@
         <span id="span_phone"></span>
         <br />
 
-		<span id='reg'>注册</span>
+        <div id="reg">注册</div>
       </div>
 
-      <div id="div_right">
-        <p>已有账号？<a href="">账号登录</a></p>
-      </div>
+      <div id="div_right" @click="goTologin">已有账号？账号登录</div>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  name: "sign",
+  data() {
+    return {
+      bgImg: {
+        background: "url(" + require("@/assets/bg.jpg") + ")",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        width: "100%",
+        height: "100%",
+        position: "absolute",
+      },
+    };
+  },
+  methods: {
+    goTologin() {
+      this.$router.push({ path: "/login" });
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -56,10 +74,6 @@ export default {};
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
-}
-
-body {
-  padding: 50px;
 }
 
 #div_whole {
@@ -112,15 +126,18 @@ body {
 #div_right {
   float: right;
   font-size: 15px;
-  margin:20px 20px auto auto;
+  margin: 20px 20px auto auto;
+  cursor: pointer;
 }
 
-#reg{
-	margin-left: 200px;
+#reg {
+  padding-left: 180px;
   font-size: 25px;
+  margin-left: 20px;
+  cursor: pointer;
 }
 
-.lab{
-	margin-left: 20px;
+.lab {
+  margin-left: 20px;
 }
 </style>
