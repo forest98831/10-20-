@@ -24,7 +24,9 @@
 							</tr>
 							<tr>
 								<td colspan="2" class="lotd">
-									<div class="login">登录</div>
+									<a href="javascrip:void(0)" id="submit"
+									class="btn btn-default btn-lg active" role="button">登录</a>
+                                    <div @click="onToSign">注册</div>
 								</td>
 							</tr>
 						</table>
@@ -37,6 +39,15 @@
 
 <script>
 export default {
+    name:'login',
+    data(){
+
+    },
+    methods:{
+        onToSign(){
+            this.$router.push({ path:"/sign"})
+        }
+    }
     
 }
 </script>
@@ -58,7 +69,7 @@ body {
 	height: 450px;
 	border: 3px solid #EEEEEE;
 	background-color: #39c5bb;
-	margin: 200px auto 0 auto;
+	margin: auto;
 }
 
 #div_left {
@@ -114,9 +125,5 @@ body {
 	height: 40px;
 	padding-right: 50px;
 }
-.login{
-	margin: 70px 0 0 60px;
-	cursor: pointer;
-	font-size: 25px;
-}
+
 </style>

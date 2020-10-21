@@ -9,25 +9,8 @@
         </div>
 
 
-        <div class="center">
-            <el-tabs v-model="activeName" :tab-position="tabPosition" type="card" >
-                <el-tab-pane label="用户管理" name="first">
-                    <div v-for="(item,index) in articalList" :key="index" @click="onToNextPage(item.id)">
-                        <ul class="center-ul">
-                            <li class="center-li"><div class="center-a">{{item.name}}</div></li>
-                        </ul>
-                    </div>
-                </el-tab-pane>
-                <el-tab-pane label="配置管理" name="second">
-                    
-                </el-tab-pane>
-                <el-tab-pane label="角色管理" name="third">
-                    
-                </el-tab-pane>
-                <el-tab-pane label="定时任务补偿" name="fourth">
-                    
-                </el-tab-pane>
-            </el-tabs>
+        <div class="center" v-for="(item,index) in articalList" :key="index">
+            {{item.artical}}
         </div>
 
 
@@ -48,9 +31,7 @@ export default {
     data(){
         return{
             logo:require('@/assets/logo.png'),
-            tabPosition: 'left',
             articalList:this.getArticalList(),
-            activeName:'first',
         }
     },
     methods:{
@@ -81,18 +62,8 @@ export default {
                 },
             ]
         },
-        onToArtical(){
-            this.$router.push({path:"/artical"})
-            // this.$router.push({
-            //     name:'artical',
-            //     path:"/artical",
-            //     query:  {flight: JSON.stringify(item)}
-            // })
-
-        },
         onToNextPage(id) {
-            console.log(id);
-            return this.onToArtical();
+            
         },
     }
 
@@ -136,7 +107,6 @@ export default {
     width: 90%;
     display: block;
     margin: 0px auto 0px auto;
-    cursor: pointer;
     padding: 5px 0 5px 0;
 }
 .center-ul:hover{

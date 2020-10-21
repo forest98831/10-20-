@@ -23,5 +23,17 @@ export default new Router({
       component: ()=>
         import('../containers/login')
     },
+    {
+      path: '/sign',
+      name: 'sign',
+      component: ()=>
+        import('../containers/sign')
+    },
+    {
+      path: '/artical',
+      name: 'artical',
+      component: ()=>
+        import('../containers/artical')
+    },
   ]
 })
