@@ -11,11 +11,13 @@
 
             <div class="center">
                 <div class="centerleft"><img :src="url" alt="" class="center-img"></div>
-                <div class="centerright"><div>名称：{{title}}</div>
-                <div>价格：{{price}}元</div>
-                <div>联系方式：{{phone}}</div>
-                <div>联系人：{{name}}</div>
-                <div>详情：{{artical}}</div></div>
+                <div class="centerright">
+                    <div>名称：{{title}}</div>
+                    <div>价格：{{price}}元</div>
+                    <div>联系方式：{{phone}}</div>
+                    <div>联系人：{{name}}</div>
+                    <div>详情：{{artical}}</div>
+                </div>
                 
                 
             </div>
