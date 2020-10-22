@@ -41,5 +41,11 @@ export default new Router({
       component: ()=>
         import('../containers/serve')
     },
+    {
+      path: '/publish',
+      name: 'publish',
+      component: ()=>
+        import('../containers/publish')
+    },
   ]
 })

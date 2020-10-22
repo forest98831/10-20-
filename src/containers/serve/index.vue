@@ -1,15 +1,40 @@
 <template>
     <div>
-        <div class="head">
+        <div class="head" @click="goHome">
             <div class="head-left">
                 <img :src="logo" alt class="head-left-logo">
-                优诚悦邻公众服务平台
+                优城悦邻公众服务平台
             </div>
-            <div class="head-right" @click="onToLogin">登录</div>
+            <div class="head-right" @click="onToLogin">请登录</div>
         </div>
 
 
             <div class="center">
+                <img :src="url" alt="" class="center-img">
+                <div class="center-left">
+                    <div class="center-title">{{title}}</div>
+                    <div class="center-price">￥{{price}}.00+</div>
+                    <div class="center-npd">
+                        <div>联系人：{{name}}</div>
+                        <div>联系方式：{{phone}}</div>
+                        <div>发布时间：{{date}}</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="three">
+                <div class="three-border">
+                    <div class="three-title">商品详情</div>
+                </div>
+                <div class="three-artical">{{artical}}</div>
+            </div>
+
+
+
+
+
+
+            <!-- <div class="center">
                 <div class="centerleft">
                     <img :src="url" alt="" class="center-img">
                 </div>
@@ -20,7 +45,7 @@
                     <div>联系方式：{{phone}}</div>
                     <div>联系人：{{name}}</div>
                 </div>
-            </div>
+            </div> -->
 
             <div>
                 <el-table
@@ -86,6 +111,8 @@ export default {
             artical:'',
             url:'',
             tableData:'',
+            date:'',
+            price:'',
         }
         
     },
@@ -93,6 +120,9 @@ export default {
     methods:{
         onToLogin(){
             this.$router.push({ path:"/login"})
+        },
+        goHome(){
+            this.$router.push({ path:"/"})
         },
         objectSpanMethod({ row, column, rowIndex, columnIndex }) {
         if (columnIndex === 0) {
@@ -122,7 +152,9 @@ export default {
 5、客厅：天花墙面无灰尘蜘蛛网、电视墙光亮无水印、沙发表面底部无杂质灰尘掉发等、装饰墙面无灰尘污渍、垃圾桶无污垢水滴。`,
                     name:'朱女士',
                     phone:'1328584****',
+                    date:'2020-10-31  14:14:25',
                     url:require('@/assets/serve1.png'),
+                    price:'500',
                     tableData: [{
                         select: '大扫除A套餐',
                         standard:'/',
@@ -177,7 +209,9 @@ export default {
 6、阳台：天花墙面无灰尘蜘蛛网；晾衣杆无灰尘污渍；盆栽挪移清洁。`,
                     name:'朱女士',
                     phone:'1328584****',
+                    date:'2020-10-31  14:14:25',
                     url:require('@/assets/serve2.png'),
+                    price:'500',
                     tableData: [{
                         select: '大扫除B套餐',
                         area: '60㎡以下',
@@ -232,7 +266,9 @@ export default {
 方法：擦拭为主，重点除污，清除死角，不留建筑遗留物，用玻璃清洗剂擦拭镜面、玻璃，冲洗便池消毒。对因长期处于厨房环境下面出现的家具、电器色变现象进行处理、翻新，使其达到历久如新的效果。`,
                     name:'朱女士',
                     phone:'1328584****',
+                    date:'2020-10-31  14:14:25',
                     url:require('@/assets/serve3.png'),
+                    price:'5',
                     tableData: [{
                         select: '开荒保洁',
                         area: '/',
@@ -272,7 +308,9 @@ export default {
 3、按指定时间和运行情况分别对压缩机和风机电机加入适量的机油和润滑油，以保证风机电机和压缩机的运行正常。`,
                     name:'朱女士',
                     phone:'1328584****',
+                    date:'2020-10-31  14:14:25',
                     url:require('@/assets/serve4.png'),
+                    price:'79',
                     tableData: [{
                         select: '空调清洗',
                         area: '/',
@@ -297,7 +335,9 @@ export default {
 除甲醛喷雾剂是更专业的除甲醛方式。 毕竟是专门用于甲醛的物质。 甲醛的释放源头主要是家具这的特征，除甲醛喷雾剂不是管理甲醛，而是重点是在家具表面形成薄膜，但为了防止薄膜破损，需要反复喷雾`,
                     name:'朱女士',
                     phone:'1328584****',
+                    date:'2020-10-31  14:14:25',
                     url:require('@/assets/serve5.png'),
+                    price:'40',
                     tableData: [{
                         select: '甲醛治理',
                         area: '/',
@@ -331,6 +371,8 @@ export default {
                 this.url = item.url
                 this.phone = item.phone
                 this.tableData = item.tableData
+                this.date = item.date
+                this.price = item.price
             }
 
         })
@@ -342,10 +384,10 @@ export default {
 
 <style scoped>
 .head{
-    background-color: skyblue;
+    background-image: linear-gradient(to right, #123c7c,#176ccb);;
     display: flex;
     justify-content: space-between;
-    padding: 10px 20% 10px 20%;
+    padding: 20px 20% 30px 20%;
     color: white;
 }
 .head-left{
@@ -359,57 +401,81 @@ export default {
 }
 .head-right{
     text-align: right;
-    font-size: 20px;
+    font-size: 16px;
     color: white;
     cursor: pointer;
     margin-top: 15px;
 }
 .center{
     /* width: 60%; */
-    margin: 50px auto 0 auto;
+    margin: 100px auto 0 auto;
     padding: 0 20% 0 20%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
-.centerleft{
-    width: 40%;
-}
-.centerright{
-    width: 60%;
-    line-height: 3rem;
-    font-size: 16px;
-}
-.center-ul{
-    border-bottom: 1px dashed black;
-}
-.center-a{
-    text-decoration:none;
-    width: 90%;
-    display: block;
-    margin: 0px auto 0px auto;
-    padding: 5px 0 5px 0;
-}
-.center-ul:hover{
-    background-color: skyblue;
+.center-left{
+    width: 75%;
 }
 .center-img{
-    /* height: 300px; */
-    margin-top: 100px;
-    width: 425px;
+    height: 254px;
+    width: 254px;
+}
+.center-title{
+    color: #333;
+    font-size: 28px;
+    font: bold;
+}
+.center-price{
+    color: #333;
+    margin-top: 20px;
+    font-size: 30px;
+    font-weight: 700;
+}
+.center-npd{
+    background-color: rgb(221, 221, 221);
+    padding: 15px 0 20px 20px;
+    line-height: 38px;
+    font-size: 20px;
+    margin: 10px 0 0px 0;
+}
+.three{
+    width: 60%;
+    margin: 50px auto 0 auto;
+}
+.three-border{
+    border-bottom: 1px solid rgb(221, 221, 221);
+}
+.three-title{
+    width: 100px;
+    text-align: center;
+    font-size: 24px;
+    color: #123c7c ;
+    font-weight: 700;
+    height: 40px;
+    margin-left: 30px;
+    border-bottom: 4px solid #123c7c ;
+}
+.three-artical{
+    font-size: 20px;
+    color: #333;
+    line-height: 2rem;
+    margin-top: 10px;
 }
 .text-wrapper {
   white-space: pre-wrap;
 }
 .bottom{
-    border-top: 1px solid #d1d1d1;
-    padding: 10px 20% 10px 20%;
-    font-size: 10px;
+    padding: 20px 20% 20px 20%;
+    font-size: 14px ;
     width: 60%;
     height: 50px;
     text-align: center;
     line-height: 25px;
-    position: absolute;
-    /* bottom: 10px; */
+    /* position: absolute; */
+    /* bottom: 0px; */
+    margin-top: 0px;
+    background-color:#393939;
+    color: #666;
 }
 .el-table { pointer-events:none; }
 </style>

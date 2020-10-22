@@ -5,86 +5,8 @@
                 <img :src="logo" alt class="head-left-logo">
                 优城悦邻公众服务平台
             </div>
-            <div @click="onToPublish">发布</div>
             <div class="head-right" @click="onToLogin">请登录</div>
         </div>
-
-
-        <div class="center">
-            <div :class="['center-left',{'center-left-show':isShow}]">
-                <div :class="['center-left-title',{'center-title-show':isShow}]" @click="deal">
-                    二手交易信息汇总
-                </div>
-            </div>
-            <div :class="['center-right',{'center-left-show':!isShow}]">
-                <div :class="['center-right-title',{'center-title-show':!isShow}]" @click="clear">
-                    清洁套餐
-                </div>
-            </div>
-            
-        </div>
-        <div :class="['three',{'three-show':isShow}]">
-            <div v-for="(item,index) in articalList" class="center-a" :key="index" @click="onToNextPage(index)">
-                <div class="three-item">
-                    <img :src="item.url" alt="" class="three-img">
-                    <div>
-                        <div>{{item.title}}</div>
-                        <div class="three-artical">{{item.artical}}</div>
-                        <div class="three-date">{{item.date}}</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div :class="['three',{'three-show':!isShow}]">
-            <div v-for="(item,index) in serveList" class="center-a" :key="index" @click="onToNext(index)">
-                <div class="three-item">
-                    <img :src="item.url" alt="" class="three-img">
-                    <div>
-                        <div>{{item.title}}</div>
-                        <div class="three-artical">{{item.artical}}</div>
-                        <div class="three-date">{{item.date}}</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-
-
-        <!-- <div class="center">
-            <el-tabs v-model="activeName" @tab-click="handleClick"> 
-                <el-tab-pane label="二手交易信息汇总" name="first">
-                    <div v-for="(item,index) in articalList" class="center-a" :key="index" @click="onToNextPage(index)">
-                        <div class="center-a">{{item.title}}</div>
-                    </div>
-                </el-tab-pane>
-                <el-tab-pane label="清洁套餐" name="second">
-                    <div v-for="(item,index) in serveList" class="center-a" :key="index" @click="onToNext(index)">
-                        <div class="center-a">{{item.title}}</div>
-                    </div>
-                </el-tab-pane>
-            </el-tabs>
-        </div> -->
-
-
-
-
-        <!-- <div class="center">
-            <el-tabs :tab-position="tabPosition">
-                <el-tab-pane label="二手交易信息汇总" class="el-tabs__item">
-                    <div v-for="(item,index) in articalList" class="center-a" :key="index" @click="onToNextPage(index)">
-                        <div class="center-a">{{item.title}}</div>
-                    </div>
-                </el-tab-pane>
-                <el-tab-pane label="清洁套餐" class="el-tabs__item">
-                    <div v-for="(item,index) in serveList" :key="index" @click="onToNext(index)">
-                        <div class="center-a">{{item.title}}</div>
-                    </div>
-                </el-tab-pane>
-            </el-tabs>
-        </div> -->
-
-
 
 
         <div class="bottom">
@@ -112,9 +34,6 @@ export default {
     methods:{
         onToLogin(){
             this.$router.push({ path:"/login"})
-        },
-        onToPublish(){
-            this.$router.push({ path:"/publish"})
         },
         goHome(){
             this.$router.push({ path:"/"})
